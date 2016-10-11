@@ -162,7 +162,7 @@ MonoBehaviour:
     Prototype
 
 
-    Team GOAT'
+    Team GO@'
 --- !u!222 &375593816
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -366,7 +366,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9df6b10d71d25446ab27764328f0426b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: afe50082fd0914eb0a48297718bad6eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -501,8 +501,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 361, y: -254}
-  m_SizeDelta: {x: 200, y: 100}
+  m_AnchoredPosition: {x: 0, y: -336}
+  m_SizeDelta: {x: 484, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1238346336
 MonoBehaviour:
