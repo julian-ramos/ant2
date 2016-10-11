@@ -14,9 +14,12 @@ public class MoveTheAnt : MonoBehaviour {
 	private int thunderCount;
 	private int count = 0;
 	private bool isSpeedup = false;
-	private float timeLeft;
+	private bool isShowClockText = false;
+	private float timeLeftForSpeedUp;
+	private float timeLeftForClockText;
 
 	public Text thunderText;
+	public Text clockText;
 	public Image thunder1;
 	public Image thunder2;
 
@@ -32,6 +35,8 @@ public class MoveTheAnt : MonoBehaviour {
 		thunder2.enabled = false;
 		thunderCount = 0;
 		thunderText.text = "";
+		clockText.text = "";
+
 		anim = GetComponent<Animator> ();
 		body = GetComponent<Rigidbody2D> ();
 			
@@ -73,19 +78,28 @@ public class MoveTheAnt : MonoBehaviour {
 			ReduceThunder ();
 			moveSpeed = moveSpeed * 2;
 			isSpeedup = true;
-			timeLeft = 5.0f;
+			timeLeftForSpeedUp = 5.0f;
 			thunderText.text = "Speed Up !!!";
 		}
 
 		if (isSpeedup == true) {
-			timeLeft -= Time.deltaTime;
-			if(timeLeft < 0)
+			timeLeftForSpeedUp -= Time.deltaTime;
+			if(timeLeftForSpeedUp < 0)
 			{
 				moveSpeed = moveSpeed / 2;
 				isSpeedup = false;
-				timeLeft = 5.0f;
+				timeLeftForSpeedUp = 5.0f;
 				print ("down");
 				thunderText.text = "";
+			}
+		}
+
+		// check clock text
+		if (isShowClockText == true) {
+			timeLeftForClockText -= Time.deltaTime;
+			if (timeLeftForClockText < 0) {
+				clockText.text = "";
+				isShowClockText = false;
 			}
 		}
 	
@@ -95,9 +109,21 @@ public class MoveTheAnt : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.CompareTag ("Thunder")) {
 			other.gameObject.SetActive (false);
+			UpdateThunder ();
 		}
 
-		UpdateThunder ();
+		if (other.gameObject.CompareTag ("Clock")) {
+			other.gameObject.SetActive (false);
+			GameTimerScript.timer -= 5;
+			if (isShowClockText == false) {
+				clockText.text = "Time + 5";
+				isShowClockText = true;
+				timeLeftForClockText = 2;
+			}
+
+		}
+
+
 
 	}
 

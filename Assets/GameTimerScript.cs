@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GameTimerScript : MonoBehaviour {
 
-	private float timer;
+	public static float timer;
 
 	public float timerLength;
 
