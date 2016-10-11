@@ -7,7 +7,7 @@ public class MoveTheAnt : MonoBehaviour {
 
 	private Vector3 mousePos;
 	public float moveSpeed = 0.1f;
-
+	public Animator anim;
 
 	//me
 	private int thunderCount;
@@ -31,6 +31,7 @@ public class MoveTheAnt : MonoBehaviour {
 		thunder2.enabled = false;
 		thunderCount = 0;
 		thunderText.text = "";
+		anim = GetComponent<Animator> ();
 			
 	}
 	
@@ -49,7 +50,12 @@ public class MoveTheAnt : MonoBehaviour {
 			float angle = Mathf.Atan2 (vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
 			Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
 			transform.rotation = q;
+			anim.enabled = true;
+
+		} else {
+			anim.enabled = false;
 		}
+			
 
 	
 		// press key
