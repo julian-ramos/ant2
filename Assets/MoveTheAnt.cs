@@ -8,6 +8,7 @@ public class MoveTheAnt : MonoBehaviour {
 	private Vector3 mousePos;
 	public float moveSpeed = 0.1f;
 	public Animator anim;
+	public Rigidbody2D body;
 
 	//me
 	private int thunderCount;
@@ -32,6 +33,7 @@ public class MoveTheAnt : MonoBehaviour {
 		thunderCount = 0;
 		thunderText.text = "";
 		anim = GetComponent<Animator> ();
+		body = GetComponent<Rigidbody2D> ();
 			
 	}
 	
@@ -51,6 +53,11 @@ public class MoveTheAnt : MonoBehaviour {
 			Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
 			transform.rotation = q;
 			anim.enabled = true;
+
+
+			anim.speed = (vectorToTarget.magnitude/44f-0.8f)*8f;
+//			Debug.Log (anim.speed);
+//			Debug.Log (body.velocity.y);
 
 		} else {
 			anim.enabled = false;
